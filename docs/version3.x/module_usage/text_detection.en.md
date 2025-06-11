@@ -188,7 +188,10 @@ By default, GPU 0 will be used if available; otherwise, the CPU will be used.
 </tr>
 <tr>
 <td><code>use_tensorrt</code></td>
-<td>Whether to use the Paddle Inference TensorRT subgraph engine.</td>
+<td>Whether to use the Paddle Inference TensorRT subgraph engine.</br>
+For Paddle with CUDA version 11.8, the compatible TensorRT version is 8.x (x>=6), and it is recommended to install TensorRT 8.6.1.6.</br>
+For Paddle with CUDA version 12.6, the compatible TensorRT version is 10.x (x>=5), and it is recommended to install TensorRT 10.5.0.18.
+</td>
 <td><code>bool</code></td>
 <td><code>False</code></td>
 </tr>
@@ -207,7 +210,7 @@ By default, GPU 0 will be used if available; otherwise, the CPU will be used.
 <tr>
 <td><code>enable_mkldnn</code></td>
 <td>
-Whether to use MKL-DNN acceleration for inference.
+Whether to enable MKL-DNN acceleration for inference. If MKL-DNN is unavailable or the model does not support it, acceleration will not be used even if this flag is set.
 </td>
 <td><code>bool</code></td>
 <td><code>True</code></td>
@@ -228,6 +231,12 @@ Whether to use MKL-DNN acceleration for inference.
 <td><code>limit_type</code></td>
 <td>Type of image side length limitation. <code>"min"</code> ensures the shortest side of the image is no less than <code>det_limit_side_len</code>; <code>"max"</code> ensures the longest side is no greater than <code>limit_side_len</code>. If set to <code>None</code>, the default value from the official PaddleOCR model configuration will be used.</td>
 <td><code>str</code> / <code>None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>max_side_limit</code></td>
+<td>Limit on the max length of the input image for detection.<code>int</code> Limit the longest side of the image for input detection model. If set to <code>None</code>, the default value from the official PaddleOCR model configuration will be used.</td>
+<td><code>int</code> / <code>None</code></td>
 <td><code>None</code></td>
 </tr>
 <tr>

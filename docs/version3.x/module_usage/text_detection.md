@@ -189,7 +189,10 @@ for res in output:
 </tr>
 <tr>
 <td><code>use_tensorrt</code></td>
-<td>是否启用 Paddle Inference 的 TensorRT 子图引擎。</td>
+<td>是否启用 Paddle Inference 的 TensorRT 子图引擎。</br>
+对于 CUDA 11.8 版本的飞桨，兼容的 TensorRT 版本为 8.x（x>=6），建议安装 TensorRT 8.6.1.6。</br>
+对于 CUDA 12.6 版本的飞桨，兼容的 TensorRT 版本为 10.x（x>=5），建议安装 TensorRT 10.5.0.18。
+</td>
 <td><code>bool</code></td>
 <td><code>False</code></td>
 </tr>
@@ -208,7 +211,7 @@ for res in output:
 <tr>
 <td><code>enable_mkldnn</code></td>
 <td>
-是否启用MKL-DNN加速库。<br/>
+是否启用 MKL-DNN 加速推理。如果 MKL-DNN 不可用或模型不支持通过 MKL-DNN 加速，即使设置了此标志，也不会使用加速。<br/>
 </td>
 <td><code>bool</code></td>
 <td><code>True</code></td>
@@ -229,6 +232,12 @@ for res in output:
 <td><code>limit_type</code></td>
 <td>检测的图像边长限制,检测的边长限制类型，<code>"min"</code> 表示保证图像最短边不小于det_limit_side_len,<code>"max"</code>表示保证图像最长边不大于limit_side_len。如果设置为None, 将默认使用PaddleOCR官方模型配置中的该参数值。</td>
 <td><code>str</code> / <code>None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>max_side_limit</code></td>
+<td>检测的图像边长最大值限制：<code>int</code> 限制输入检测模型的图片最长边，如果设置为<code>None</code>, 将默认使用PaddleOCR官方模型配置中的该参数值。</td>
+<td><code>int</code> / <code>None</code></td>
 <td><code>None</code></td>
 </tr>
 <tr>
