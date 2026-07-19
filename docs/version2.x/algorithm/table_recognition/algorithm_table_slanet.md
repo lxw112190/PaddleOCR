@@ -18,7 +18,7 @@ comments: true
 
 |模型|骨干网络|配置文件|acc|下载链接|
 | --- | --- | --- | --- | --- |
-|SLANet|LCNetV2|[configs/table/SLANet_lcnetv2.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/table/SLANet_lcnetv2.yml)|76.67%| [训练模型](https://paddleocr.bj.bcebos.com/openatom/ch_ppstructure_openatom_SLANetv2_train.tar) /[推理模型](https://paddleocr.bj.bcebos.com/openatom/ch_ppstructure_openatom_SLANetv2_infer.tar) |
+|SLANet|LCNetV2|[configs/table/SLANet_lcnetv2.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/table/SLANet_lcnetv2.yml)|76.67%| [训练模型](https://paddleocr.bj.bcebos.com/openatom/ch_ppstructure_openatom_SLANetv2_train.tar) /[推理模型](https://paddleocr.bj.bcebos.com/openatom/ch_ppstructure_openatom_SLANetv2_infer.tar) |
 
 ## 2. 环境配置
 
@@ -26,7 +26,7 @@ comments: true
 
 ## 3. 模型训练、评估、预测
 
-上述SLANet_LCNetv2模型使用PubTabNet表格识别公开数据集训练得到，数据集下载可参考 [table_datasets](../../datasets/table_datasets.md)。
+上述SLANet_LCNetv2模型使用PubTabNet表格识别公开数据集训练得到，数据集下载可参考 [table_datasets](../../../datasets/table_datasets.md)。
 
 ### 启动训练
 

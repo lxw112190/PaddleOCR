@@ -17,8 +17,8 @@ On the ICDAR2015 dataset, the text detection result is as follows:
 
 |Model|Backbone|Configuration|Precision|Recall|Hmean|Download|
 | --- | --- | --- | --- | --- | --- | --- |
-|PSE| ResNet50_vd | [configs/det/det_r50_vd_pse.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/det/det_r50_vd_pse.yml)| 85.81%    |79.53%|82.55%|[trained model](https://paddleocr.bj.bcebos.com/dygraph_v2.1/en_det/det_r50_vd_pse_v2.0_train.tar)|
-|PSE| MobileNetV3| [configs/det/det_mv3_pse.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/det/det_mv3_pse.yml) | 82.20%    |70.48%|75.89%|[trained model](https://paddleocr.bj.bcebos.com/dygraph_v2.1/en_det/det_mv3_pse_v2.0_train.tar)|
+|PSE| ResNet50_vd | [configs/det/det_r50_vd_pse.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/det/det_r50_vd_pse.yml)| 85.81%    |79.53%|82.55%|[trained model](https://paddleocr.bj.bcebos.com/dygraph_v2.1/en_det/det_r50_vd_pse_v2.0_train.tar)|
+|PSE| MobileNetV3| [configs/det/det_mv3_pse.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/det/det_mv3_pse.yml) | 82.20%    |70.48%|75.89%|[trained model](https://paddleocr.bj.bcebos.com/dygraph_v2.1/en_det/det_mv3_pse_v2.0_train.tar)|
 
 ## 2. Environment
 
@@ -26,7 +26,7 @@ Please prepare your environment referring to [prepare the environment](../../ppo
 
 ## 3. Model Training / Evaluation / Prediction
 
-The above PSE model is trained using the ICDAR2015 text detection public dataset. For the download of the dataset, please refer to [ocr_datasets](./dataset/ocr_datasets_en.md).
+The above PSE model is trained using the ICDAR2015 text detection public dataset. For the download of the dataset, please refer to [ocr_datasets](../../../datasets/ocr_datasets.en.md).
 
 After the data download is complete, please refer to [Text Detection Training Tutorial](../../ppocr/model_train/detection.en.md) for training. PaddleOCR has modularized the code structure, so that you only need to **replace the configuration file** to train different detection models.
 

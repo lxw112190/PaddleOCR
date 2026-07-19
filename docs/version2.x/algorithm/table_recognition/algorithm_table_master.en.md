@@ -17,7 +17,7 @@ On the PubTabNet table recognition public data set, the algorithm reproduction a
 
 |Model|Backbone|Cnnfig|Acc|Download link|
 | --- | --- | --- | --- | --- |
-|TableMaster|TableResNetExtra|[configs/table/table_master.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/table/table_master.yml)|77.47%|[trained model](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_train.tar)/[inference model](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_infer.tar)|
+|TableMaster|TableResNetExtra|[configs/table/table_master.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/table/table_master.yml)|77.47%|[trained model](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_train.tar)/[inference model](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_infer.tar)|
 
 ## 2. Environment
 
@@ -25,7 +25,7 @@ Please refer to ["Environment Preparation"](../../ppocr/environment.en.md) to co
 
 ## 3. Model Training / Evaluation / Prediction
 
-The above TableMaster model is trained using the PubTabNet table recognition public dataset. For the download of the dataset, please refer to [table_datasets](../../datasets/table_datasets.en.md).
+The above TableMaster model is trained using the PubTabNet table recognition public dataset. For the download of the dataset, please refer to [table_datasets](../../../datasets/table_datasets.en.md).
 
 After the data download is complete, please refer to [Text Recognition Training Tutorial](../../ppocr/model_train/recognition.en.md) for training. PaddleOCR has modularized the code structure, so that you only need to **replace the configuration file** to train different models.
 

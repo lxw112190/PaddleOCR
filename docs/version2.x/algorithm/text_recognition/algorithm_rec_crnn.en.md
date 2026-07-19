@@ -18,8 +18,8 @@ Using MJSynth and SynthText two text recognition datasets for training, and eval
 |Model|Backbone|ACC|config|Download link|
 | --- | --- | --- | --- | --- |
 |---|---|---|---|---|
-|CRNN|Resnet34_vd|81.04%|[configs/rec/rec_r34_vd_none_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_r34_vd_none_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_r34_vd_none_bilstm_ctc_v2.0_train.tar)|
-|CRNN|MobileNetV3|77.95%|[configs/rec/rec_mv3_none_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_mv3_none_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mv3_none_bilstm_ctc_v2.0_train.tar)|
+|CRNN|Resnet34_vd|81.04%|[configs/rec/rec_r34_vd_none_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_r34_vd_none_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_r34_vd_none_bilstm_ctc_v2.0_train.tar)|
+|CRNN|MobileNetV3|77.95%|[configs/rec/rec_mv3_none_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_mv3_none_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mv3_none_bilstm_ctc_v2.0_train.tar)|
 
 ## 2. Environment
 
@@ -73,17 +73,17 @@ python3 tools/infer/predict_rec.py --image_dir="./doc/imgs_words_en/word_336.png
 
 ### 4.2 C++ Inference
 
-With the inference model prepared, refer to the [cpp infer](../../ppocr/infer_deploy/cpp_infer.en.md) tutorial for C++ inference.
+With the inference model prepared, refer to the [cpp infer](../../../version2.x/legacy/cpp_infer.en.md) tutorial for C++ inference.
 
 ### 4.3 Serving
 
-With the inference model prepared, refer to the [pdserving](../../ppocr/infer_deploy/paddle_server.en.md) tutorial for service deployment by Paddle Serving.
+With the inference model prepared, refer to the [pdserving](../../../version2.x/legacy/paddle_server.en.md) tutorial for service deployment by Paddle Serving.
 
 ### 4.4 More
 
 More deployment schemes supported for CRNN:
 
-- Paddle2ONNX: with the inference model prepared, please refer to the [paddle2onnx](../../ppocr/infer_deploy/paddle2onnx.en.md) tutorial.
+- Paddle2ONNX: with the inference model prepared, please refer to the [paddle2onnx](../../../version2.x/legacy/paddle_server.en.md) tutorial.
 
 ## 5. FAQ
 

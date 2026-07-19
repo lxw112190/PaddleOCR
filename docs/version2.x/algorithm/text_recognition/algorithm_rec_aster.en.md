@@ -7,7 +7,7 @@ comments: true
 ## 1. Introduction
 
 Paper:
-> [STAR-Net: a spatial attention residue network for scene text recognition.](http://www.bmva.org/bmvc/2016/papers/paper043/paper043.pdf)
+> [STAR-Net: a spatial attention residue network for scene text recognition.](https://www.bmva-archive.org.uk/bmvc/2016/papers/paper043/paper043.pdf)
 > Wei Liu, Chaofeng Chen, Kwan-Yee K. Wong, Zhizhong Su and Junyu Han.
 > BMVC, pages 43.1-43.13, 2016
 
@@ -16,8 +16,8 @@ Using MJSynth and SynthText two text recognition datasets for training, and eval
 |Model|Backbone|ACC|config|Download link|
 | --- | --- | --- | --- | --- |
 |---|---|---|---|---|
-|StarNet|Resnet34_vd|84.44%|[configs/rec/rec_r34_vd_tps_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_r34_vd_tps_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_r34_vd_tps_bilstm_ctc_v2.0_train.tar)|
-|StarNet|MobileNetV3|81.42%|[configs/rec/rec_mv3_tps_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_mv3_tps_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mv3_tps_bilstm_ctc_v2.0_train.tar)|
+|StarNet|Resnet34_vd|84.44%|[configs/rec/rec_r34_vd_tps_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_r34_vd_tps_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_r34_vd_tps_bilstm_ctc_v2.0_train.tar)|
+|StarNet|MobileNetV3|81.42%|[configs/rec/rec_mv3_tps_bilstm_ctc.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_mv3_tps_bilstm_ctc.yml)|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mv3_tps_bilstm_ctc_v2.0_train.tar)|
 
 ## 2. Environment
 
@@ -71,17 +71,17 @@ python3 tools/infer/predict_rec.py --image_dir="./doc/imgs_words_en/word_336.png
 
 ### 4.2 C++ Inference
 
-With the inference model prepared, refer to the [cpp infer](../../ppocr/infer_deploy/cpp_infer.en.md) tutorial for C++ inference.
+With the inference model prepared, refer to the [cpp infer](../../../version2.x/legacy/cpp_infer.en.md) tutorial for C++ inference.
 
 ### 4.3 Serving
 
-With the inference model prepared, refer to the [pdserving](../../ppocr/infer_deploy/paddle_server.en.md) tutorial for service deployment by Paddle Serving.
+With the inference model prepared, refer to the [pdserving](../../../version2.x/legacy/paddle_server.en.md) tutorial for service deployment by Paddle Serving.
 
 ### 4.4 More
 
 More deployment schemes supported for STAR-Net:
 
-- Paddle2ONNX: with the inference model prepared, please refer to the [paddle2onnx](../../ppocr/infer_deploy/paddle2onnx.en.md) tutorial.
+- Paddle2ONNX: with the inference model prepared, please refer to the [paddle2onnx](../../../version2.x/legacy/paddle2onnx.en.md) tutorial.
 
 ## 5. FAQ
 

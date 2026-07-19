@@ -47,7 +47,7 @@ SVTR在场景文本识别公开数据集上的精度(%)和模型文件如下：
 
 #### 启动训练
 
-请参考[文本识别训练教程](../../ppocr/model_train/recognition.md)。PaddleOCR对代码进行了模块化，训练`SVTR`识别模型时需要**更换配置文件**为`SVTR`的[配置文件](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_svtrnet.yml)。
+请参考[文本识别训练教程](../../ppocr/model_train/recognition.md)。PaddleOCR对代码进行了模块化，训练`SVTR`识别模型时需要**更换配置文件**为`SVTR`的[配置文件](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_svtrnet.yml)。
 
 具体地，在完成数据准备后，便可以启动训练，训练命令如下：
 
@@ -109,7 +109,7 @@ python3 tools/infer/predict_rec.py --image_dir='./doc/imgs_words_en/word_10.png'
 # 预测文件夹下所有图像时，可修改image_dir为文件夹，如 --image_dir='./doc/imgs_words_en/'。
 ```
 
-![](../imgs_words_en/word_10.png)
+![](./images/word_10.png)
 
 执行命令后，上面图像的预测结果（识别的文本和得分）会打印到屏幕上，示例如下：
 结果如下：

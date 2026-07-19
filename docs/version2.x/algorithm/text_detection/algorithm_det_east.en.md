@@ -16,8 +16,8 @@ On the ICDAR2015 dataset, the text detection result is as follows:
 
 |Model|Backbone|Configuration|Precision|Recall|Hmean|Download|
 | --- | --- | --- | --- | --- | --- | --- |
-|EAST|ResNet50_vd| [det_r50_vd_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/det/det_r50_vd_east.yml)|88.71%|    81.36%|    84.88%|    [model](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_r50_vd_east_v2.0_train.tar)|
-|EAST|MobileNetV3|[det_mv3_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/det/det_mv3_east.yml) | 78.20%|    79.10%|    78.65%|    [model](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_mv3_east_v2.0_train.tar)|
+|EAST|ResNet50_vd| [det_r50_vd_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/det/det_r50_vd_east.yml)|88.71%|    81.36%|    84.88%|    [model](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_r50_vd_east_v2.0_train.tar)|
+|EAST|MobileNetV3|[det_mv3_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/det/det_mv3_east.yml) | 78.20%|    79.10%|    78.65%|    [model](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_mv3_east_v2.0_train.tar)|
 
 ## 2. Environment
 
@@ -25,7 +25,7 @@ Please prepare your environment referring to [prepare the environment](../../ppo
 
 ## 3. Model Training / Evaluation / Prediction
 
-The above EAST model is trained using the ICDAR2015 text detection public dataset. For the download of the dataset, please refer to [ocr_datasets](./dataset/ocr_datasets_en.md).
+The above EAST model is trained using the ICDAR2015 text detection public dataset. For the download of the dataset, please refer to [ocr_datasets](../../../datasets/ocr_datasets.en.md).
 
 After the data download is complete, please refer to [Text Detection Training Tutorial](../../ppocr/model_train/detection.en.md) for training. PaddleOCR has modularized the code structure, so that you only need to **replace the configuration file** to train different detection models.
 

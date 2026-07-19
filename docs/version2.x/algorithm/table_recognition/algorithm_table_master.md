@@ -17,7 +17,7 @@ comments: true
 
 |模型|骨干网络|配置文件|acc|下载链接|
 | --- | --- | --- | --- | --- |
-|TableMaster|TableResNetExtra|[configs/table/table_master.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/table/table_master.yml)|77.47%|[训练模型](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_train.tar)/[推理模型](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_infer.tar)|
+|TableMaster|TableResNetExtra|[configs/table/table_master.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/table/table_master.yml)|77.47%|[训练模型](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_train.tar)/[推理模型](https://paddleocr.bj.bcebos.com/ppstructure/models/tablemaster/table_structure_tablemaster_infer.tar)|
 
 ## 2. 环境配置
 
@@ -25,7 +25,7 @@ comments: true
 
 ## 3. 模型训练、评估、预测
 
-上述TableMaster模型使用PubTabNet表格识别公开数据集训练得到，数据集下载可参考 [table_datasets](../../datasets/table_datasets.md)。
+上述TableMaster模型使用PubTabNet表格识别公开数据集训练得到，数据集下载可参考 [table_datasets](../../../datasets/table_datasets.md)。
 
 数据下载完成后，请参考[文本识别教程](../../ppocr/model_train/recognition.md)进行训练。PaddleOCR对代码进行了模块化，训练不同的模型只需要**更换配置文件**即可。
 

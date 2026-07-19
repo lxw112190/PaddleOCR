@@ -15,8 +15,8 @@ comments: true
 
 |模型|骨干网络|配置文件|Avg Accuracy|下载链接|
 | --- | --- | --- | --- | --- |
-|RARE|Resnet34_vd|[configs/rec/rec_r34_vd_tps_bilstm_att.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_r34_vd_tps_bilstm_att.yml)|83.60%|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_r34_vd_tps_bilstm_att_v2.0_train.tar)|
-|RARE|MobileNetV3|[configs/rec/rec_mv3_tps_bilstm_att.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/rec/rec_mv3_tps_bilstm_att.yml)|82.50%|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mv3_tps_bilstm_att_v2.0_train.tar)|
+|RARE|Resnet34_vd|[configs/rec/rec_r34_vd_tps_bilstm_att.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_r34_vd_tps_bilstm_att.yml)|83.60%|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_r34_vd_tps_bilstm_att_v2.0_train.tar)|
+|RARE|MobileNetV3|[configs/rec/rec_mv3_tps_bilstm_att.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/rec/rec_mv3_tps_bilstm_att.yml)|82.50%|[训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mv3_tps_bilstm_att_v2.0_train.tar)|
 
 ## 2. 环境配置
 
@@ -84,7 +84,7 @@ Predicts of doc/imgs_words/en/word_1.png:('joint ', 0.9999969601631165)
 
 RARE模型还支持以下推理部署方式：
 
-- Paddle2ONNX推理：准备好推理模型后，参考[paddle2onnx](../../ppocr/infer_deploy/paddle2onnx.md)教程操作。
+- Paddle2ONNX推理：准备好推理模型后，参考[paddle2onnx](../../../version2.x/legacy/paddle2onnx.md)教程操作。
 
 ## 5. FAQ
 

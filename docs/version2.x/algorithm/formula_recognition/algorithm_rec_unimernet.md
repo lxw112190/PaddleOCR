@@ -6,11 +6,11 @@
 > [https://github.com/opendatalab/UniMERNet](https://github.com/opendatalab/UniMERNet)
 
 
-`UniMERNet`使用[`UniMERNet通用公式识别数据集`](https://huggingface.co/datasets/wanderkid/UniMER_Dataset/tree/main)进行训练，在对应测试集上的精度如下：
+`UniMERNet`使用[`UniMERNet通用公式识别数据集`](https://opendatalab.com/OpenDataLab/UniMER-Dataset)进行训练，在对应测试集上的精度如下：
 
 | 模型        | 骨干网络       | 配置文件                                                  | SPE-<br/>BLEU↑ | SPE-<br/>EditDis↓ | CPE-<br/>BLEU↑  |CPE-<br/>EditDis↓ | SCE-<br/>BLEU↑ | SCE-<br/>EditDis↓ | HWE-<br/>BLEU↑ | HWE-<br/>EditDis↓ | 下载链接 |
 |-----------|------------|-------------------------------------------------------|:--------------:|:-----------------:|:----------:|:----------------:|:---------:|:-----------------:|:--------------:|:-----------------:|-------|
-| UniMERNet | Donut Swin | [UniMERNet.yaml](../../../configs/rec/UniMERNet.yaml) |     0.9187     |      0.0584       |  0.9252    |      0.0596      | 0.6068 |     0.2297        |   0.9157|     0.0546           |[训练模型](https://paddleocr.bj.bcebos.com/contribution/rec_unimernet_train.tar)|
+| UniMERNet | Donut Swin | [UniMERNet.yaml](../../../../configs/rec/UniMERNet.yaml) |     0.9187     |      0.0584       |  0.9252    |      0.0596      | 0.6068 |     0.2297        |   0.9157|     0.0546           |[训练模型](https://paddleocr.bj.bcebos.com/contribution/rec_unimernet_train.tar)|
 
 其中，SPE表示简单公式，CPE表示复杂公式，SCE表示扫描捕捉公式，HWE表示手写公式。每种类型的公式示例图如下：
 ![unimernet_dataset](https://github.com/user-attachments/assets/fb801a36-5614-4031-8585-700bd9f8fb2e)
@@ -29,7 +29,7 @@ pip install -r docs/algorithm/formula_recognition/requirements.txt
 
 ### 3.1 准备数据集
 
-从 [Hugging Face](https://huggingface.co/datasets/wanderkid/UniMER_Dataset/tree/main) 上下载 UniMER-1M.zip 和 UniMER-Test.zip。
+从 [OpenDataLab](https://opendatalab.com/OpenDataLab/UniMER-Dataset) 上下载 UniMER-1M.zip 和 UniMER-Test.zip。
 从 [好未来平台](https://ai.100tal.com/dataset) 下载 HME100K 数据集。之后， 使用如下命令创建数据集目录，并对数据集进行转换。
 
 ```shell
@@ -85,7 +85,7 @@ wget -P ./pretrain_models/ https://paddleocr.bj.bcebos.com/pretrained/texify.pdp
 
 ### 3.3 模型训练
 
-请参考[文本识别训练教程](../../ppocr/model_train/recognition.md)。PaddleOCR对代码进行了模块化，训练`UniMERNet`识别模型时需要**更换配置文件**为`UniMERNet`的[配置文件](https://github.com/PaddlePaddle/PaddleOCR/blob/main/configs/rec/UniMERNet.yaml)。
+请参考[文本识别训练教程](../../ppocr/model_train/recognition.md)。PaddleOCR对代码进行了模块化，训练`UniMERNet`识别模型时需要**更换配置文件**为`UniMERNet`的[配置文件](https://github.com/PaddlePaddle/PaddleOCR/blob/{{PADDLEOCR_GITHUB_REF}}/configs/rec/UniMERNet.yaml)。
 
 #### 启动训练
 

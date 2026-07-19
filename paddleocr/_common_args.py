@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from paddlex.inference import PaddlePredictorOption
 from paddlex.utils.device import get_default_device, parse_device
 
 from ._constants import (
@@ -23,19 +22,31 @@ from ._constants import (
     DEFAULT_PRECISION,
     DEFAULT_USE_TENSORRT,
     SUPPORTED_PRECISION_LIST,
+    DEFAULT_USE_CINN,
 )
 from ._utils.cli import str2bool
+
+SUPPORTED_INFERENCE_ENGINE_LIST = [
+    "paddle",
+    "paddle_static",
+    "paddle_dynamic",
+    "transformers",
+    "onnxruntime",
+]
 
 
 def parse_common_args(kwargs, *, default_enable_hpi):
     default_vals = {
         "device": DEFAULT_DEVICE,
+        "engine": None,
+        "engine_config": None,
         "enable_hpi": default_enable_hpi,
         "use_tensorrt": DEFAULT_USE_TENSORRT,
         "precision": DEFAULT_PRECISION,
         "enable_mkldnn": DEFAULT_ENABLE_MKLDNN,
         "mkldnn_cache_capacity": DEFAULT_MKLDNN_CACHE_CAPACITY,
         "cpu_threads": DEFAULT_CPU_THREADS,
+        "enable_cinn": DEFAULT_USE_CINN,
     }
 
     unknown_names = kwargs.keys() - default_vals.keys()
@@ -43,6 +54,14 @@ def parse_common_args(kwargs, *, default_enable_hpi):
         raise ValueError(f"Unknown argument: {name}")
 
     kwargs = {**default_vals, **kwargs}
+
+    if (
+        kwargs["engine"] is not None
+        and kwargs["engine"] not in SUPPORTED_INFERENCE_ENGINE_LIST
+    ):
+        raise ValueError(
+            f"Invalid engine: {kwargs['engine']}. Supported values are: {SUPPORTED_INFERENCE_ENGINE_LIST}."
+        )
 
     if kwargs["precision"] not in SUPPORTED_PRECISION_LIST:
         raise ValueError(
@@ -55,48 +74,54 @@ def parse_common_args(kwargs, *, default_enable_hpi):
     return kwargs
 
 
-def prepare_common_init_args(model_name, common_args):
-    device = common_args["device"]
-    if device is None:
-        device = get_default_device()
-    device_type, device_ids = parse_device(device)
-    if device_ids is not None:
-        device_id = device_ids[0]
-    else:
-        device_id = None
-
-    init_kwargs = {}
-    init_kwargs["use_hpip"] = common_args["enable_hpi"]
-    init_kwargs["hpi_config"] = {
-        "device_type": device_type,
-        "device_id": device_id,
-    }
-
-    pp_option = PaddlePredictorOption(
-        model_name, device_type=device_type, device_id=device_id
-    )
+def _build_paddle_static_engine_config(common_args, device_type):
+    cfg = {}
     if device_type == "gpu":
         if common_args["use_pptrt"]:
             if common_args["pptrt_precision"] == "fp32":
-                pp_option.run_mode = "trt_fp32"
+                cfg["run_mode"] = "trt_fp32"
             else:
                 assert common_args["pptrt_precision"] == "fp16", common_args[
                     "pptrt_precision"
                 ]
-                pp_option.run_mode = "trt_fp16"
+                cfg["run_mode"] = "trt_fp16"
         else:
-            pp_option.run_mode = "paddle"
+            cfg["run_mode"] = "paddle"
     elif device_type == "cpu":
-        enable_mkldnn = common_args["enable_mkldnn"]
-        if enable_mkldnn:
-            pp_option.run_mode = "mkldnn"
-            pp_option.mkldnn_cache_capacity = common_args["mkldnn_cache_capacity"]
+        if common_args["enable_mkldnn"]:
+            cfg["mkldnn_cache_capacity"] = common_args["mkldnn_cache_capacity"]
         else:
-            pp_option.run_mode = "paddle"
-        pp_option.cpu_threads = common_args["cpu_threads"]
+            cfg["run_mode"] = "paddle"
+        cfg["cpu_threads"] = common_args["cpu_threads"]
     else:
-        pp_option.run_mode = "paddle"
-    init_kwargs["pp_option"] = pp_option
+        cfg["run_mode"] = "paddle"
+    cfg["enable_cinn"] = common_args["enable_cinn"]
+    return cfg
+
+
+def prepare_common_init_args(model_name, common_args):
+    device = common_args["device"]
+    if device is None:
+        device = get_default_device()
+    device_type, _ = parse_device(device)
+
+    init_kwargs = {}
+    init_kwargs["device"] = device
+    init_kwargs["engine"] = common_args["engine"]
+    init_kwargs["use_hpip"] = common_args["enable_hpi"]
+
+    user_engine_config = common_args["engine_config"]
+    engine = common_args["engine"]
+    built = _build_paddle_static_engine_config(common_args, device_type)
+
+    if user_engine_config is not None:
+        init_kwargs["engine_config"] = user_engine_config
+    elif engine == "paddle_static":
+        init_kwargs["engine_config"] = built
+    elif engine in (None, "paddle"):
+        init_kwargs["engine_config"] = {"paddle_static": built}
+    else:
+        init_kwargs["engine_config"] = None
 
     return init_kwargs
 
@@ -111,6 +136,12 @@ def add_common_cli_opts(parser, *, default_enable_hpi, allow_multiple_devices):
         type=str,
         default=DEFAULT_DEVICE,
         help=help_,
+    )
+    parser.add_argument(
+        "--engine",
+        type=str,
+        choices=SUPPORTED_INFERENCE_ENGINE_LIST,
+        help="Inference engine to use. For CLI, engine-specific configuration should be set in the PaddleX YAML config file.",
     )
     parser.add_argument(
         "--enable_hpi",
@@ -148,4 +179,10 @@ def add_common_cli_opts(parser, *, default_enable_hpi, allow_multiple_devices):
         type=int,
         default=DEFAULT_CPU_THREADS,
         help="Number of threads to use for inference on CPUs.",
+    )
+    parser.add_argument(
+        "--enable_cinn",
+        type=str2bool,
+        default=DEFAULT_USE_CINN,
+        help="Whether to use the CINN compiler.",
     )

@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from paddlex.inference.utils.benchmark import benchmark
+
 from ._models import (
+    ChartParsing,
     DocImgOrientationClassification,
     DocVLM,
     FormulaRecognition,
@@ -31,16 +34,62 @@ from ._pipelines import (
     DocUnderstanding,
     FormulaRecognitionPipeline,
     PaddleOCR,
+    PaddleOCRVL,
     PPChatOCRv4Doc,
     PPDocTranslation,
     PPStructureV3,
     SealRecognition,
     TableRecognitionPipelineV2,
 )
+from ._api_client.async_client import AsyncPaddleOCRClient
+from ._api_client.client import PaddleOCRClient
+from ._api_client.errors import (
+    APIError,
+    AuthError,
+    InvalidRequestError,
+    JobFailedError,
+    NetworkError,
+    PaddleOCRAPIError,
+    PollTimeoutError,
+    RateLimitError,
+    RequestTimeoutError,
+    ResponseFormatError,
+    ResultParseError,
+    ServiceUnavailableError,
+)
+from ._api_client.models import (
+    Model,
+    OCROptions,
+    PaddleOCRVLOptions,
+    PPStructureV3Options,
+)
 from ._utils.logging import logger
 from ._version import version as __version__
 
+
+def doc2md_convert(source, **kwargs):
+    """Convert an office document to Markdown. See paddleocr._doc2md.convert."""
+    from ._doc2md import convert
+
+    return convert(source, **kwargs)
+
+
+def doc2md_supported_formats():
+    """Return supported file extensions. See paddleocr._doc2md.supported_formats."""
+    from ._doc2md import supported_formats
+
+    return supported_formats()
+
+
 __all__ = [
+    "benchmark",
+    "PaddleOCRClient",
+    "AsyncPaddleOCRClient",
+    "Model",
+    "OCROptions",
+    "PPStructureV3Options",
+    "PaddleOCRVLOptions",
+    "ChartParsing",
     "DocImgOrientationClassification",
     "DocVLM",
     "FormulaRecognition",
@@ -57,11 +106,26 @@ __all__ = [
     "DocUnderstanding",
     "FormulaRecognitionPipeline",
     "PaddleOCR",
+    "PaddleOCRVL",
     "PPChatOCRv4Doc",
     "PPDocTranslation",
     "PPStructureV3",
     "SealRecognition",
     "TableRecognitionPipelineV2",
+    "doc2md_convert",
+    "doc2md_supported_formats",
+    "PaddleOCRAPIError",
+    "AuthError",
+    "InvalidRequestError",
+    "APIError",
+    "JobFailedError",
+    "RateLimitError",
+    "RequestTimeoutError",
+    "PollTimeoutError",
+    "ResponseFormatError",
+    "ResultParseError",
+    "ServiceUnavailableError",
+    "NetworkError",
     "logger",
     "__version__",
 ]

@@ -16,8 +16,8 @@ comments: true
 
 |模型|骨干网络|配置文件|precision|recall|Hmean|下载链接|
 | --- | --- | --- | --- | --- | --- | --- |
-|EAST|ResNet50_vd| [det_r50_vd_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/det/det_r50_vd_east.yml)|88.71%|    81.36%|    84.88%|    [训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_r50_vd_east_v2.0_train.tar)|
-|EAST|MobileNetV3|[det_mv3_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/main/configs/det/det_mv3_east.yml) | 78.20%|    79.10%|    78.65%|    [训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_mv3_east_v2.0_train.tar)|
+|EAST|ResNet50_vd| [det_r50_vd_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/det/det_r50_vd_east.yml)|88.71%|    81.36%|    84.88%|    [训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_r50_vd_east_v2.0_train.tar)|
+|EAST|MobileNetV3|[det_mv3_east.yml](https://github.com/PaddlePaddle/PaddleOCR/tree/{{PADDLEOCR_GITHUB_REF}}/configs/det/det_mv3_east.yml) | 78.20%|    79.10%|    78.65%|    [训练模型](https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/det_mv3_east_v2.0_train.tar)|
 
 ## 2. 环境配置
 
@@ -25,7 +25,7 @@ comments: true
 
 ## 3. 模型训练、评估、预测
 
-上表中的EAST训练模型使用ICDAR2015文本检测公开数据集训练得到，数据集下载可参考 [ocr_datasets](../../datasets/ocr_datasets.md)。
+上表中的EAST训练模型使用ICDAR2015文本检测公开数据集训练得到，数据集下载可参考 [ocr_datasets](../../../datasets/ocr_datasets.md)。
 
 数据下载完成后，请参考[文本检测训练教程](../../ppocr/model_train/detection.md)进行训练。PaddleOCR对代码进行了模块化，训练不同的检测模型只需要**更换配置文件**即可。
 
